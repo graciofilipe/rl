@@ -9,15 +9,15 @@ from rl_coach.architectures.embedder_parameters import InputEmbedderParameters
 from rl_coach.architectures.layers import Dense
 
 # define the environment parameters
-env_params = GymVectorEnvironment(level='simple_maze_env.envs.simple_maze_env:Maze44')
+env_params = GymVectorEnvironment(level='simple_maze_env.envs.dual_goal_maze:DualGoalMaze66')
 
 # Clipped PPO
 agent_params = ClippedPPOAgentParameters()
 agent_params.network_wrappers['main'].input_embedders_parameters = {'observation': InputEmbedderParameters(scheme=[])}
 agent_params.network_wrappers['main'].learning_rate = 0.0003
 agent_params.network_wrappers['main'].input_embedders_parameters['observation'].activation_function = 'relu'
-agent_params.network_wrappers['main'].input_embedders_parameters['observation'].scheme = [Dense(2)]
-agent_params.network_wrappers['main'].middleware_parameters.scheme = [Dense(2)]
+agent_params.network_wrappers['main'].input_embedders_parameters['observation'].scheme = [Dense(3)]
+agent_params.network_wrappers['main'].middleware_parameters.scheme = [Dense(3), Dense(3)]
 agent_params.network_wrappers['main'].middleware_parameters.activation_function = 'relu'
 agent_params.network_wrappers['main'].batch_size = 5
 agent_params.network_wrappers['main'].optimizer_epsilon = 1e-3
@@ -30,8 +30,8 @@ agent_params.pre_network_filter.add_observation_filter('observation', 'normalize
 
 
 schedule_params = ScheduleParameters()
-schedule_params.improve_steps = TrainingSteps(int(6666))
-schedule_params.steps_between_evaluation_periods = EnvironmentSteps(611)
+schedule_params.improve_steps = TrainingSteps(int(66666))
+schedule_params.steps_between_evaluation_periods = EnvironmentSteps(6666)
 schedule_params.evaluation_steps = EnvironmentEpisodes(0)
 schedule_params.heatup_steps = EnvironmentSteps(0)
 
