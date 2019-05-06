@@ -32,7 +32,6 @@ class Maze44(gym.Env):
         #print('obs', obs)
         episode_over = (self.current_state == self.end_state).all()
         if episode_over:
-            print('DONE')
             self.reset()
         return obs, reward, episode_over, {}
 
