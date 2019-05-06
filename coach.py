@@ -30,8 +30,8 @@ agent_params.pre_network_filter.add_observation_filter('observation', 'normalize
 
 
 schedule_params = ScheduleParameters()
-schedule_params.improve_steps = TrainingSteps(int(16666))
-schedule_params.steps_between_evaluation_periods = EnvironmentSteps(6111)
+schedule_params.improve_steps = TrainingSteps(int(6666))
+schedule_params.steps_between_evaluation_periods = EnvironmentSteps(611)
 schedule_params.evaluation_steps = EnvironmentEpisodes(0)
 schedule_params.heatup_steps = EnvironmentSteps(0)
 
@@ -56,10 +56,10 @@ e0 = gm.environments[0]
 def action_for_obs(gm, env, obs):
     set_env_state(env, obs)
     gm.act(EnvironmentSteps(1))
-    print('new state', gm.env.current_state)
+    print('new state', env.env.current_state)
 
 def set_env_state(env, new_state):
-    env.state = {'observation': new_state}
+    env.states = {'observation': new_state}
     env.env.current_state = new_state
 
 import ipdb; ipdb.set_trace()
