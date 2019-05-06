@@ -30,7 +30,7 @@ agent_params.pre_network_filter.add_observation_filter('observation', 'normalize
 
 
 schedule_params = ScheduleParameters()
-schedule_params.improve_steps = TrainingSteps(int(66666))
+schedule_params.improve_steps = TrainingSteps(int(666666))
 schedule_params.steps_between_evaluation_periods = EnvironmentSteps(6666)
 schedule_params.evaluation_steps = EnvironmentEpisodes(0)
 schedule_params.heatup_steps = EnvironmentSteps(0)
